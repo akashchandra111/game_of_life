@@ -9,14 +9,14 @@
 int main()	{
 	bool is_first_buffer_active = true;
 	bool draw_mode = true;
-	short buffer1[WIN_HEIGHT][WIN_WIDTH];
-	short buffer2[WIN_HEIGHT][WIN_WIDTH];
+	short buffer1[TOTAL_CELL_Y][TOTAL_CELL_X] = { 0 };
+	short buffer2[TOTAL_CELL_Y][TOTAL_CELL_X] = { 0 };
 
 	time_t t;
 	srand((unsigned int) time(&t));
 
 	InitWindow(WIN_WIDTH, WIN_HEIGHT, "Game of life");
-	SetTargetFPS(60);
+	SetTargetFPS(5);
 
 	while(!WindowShouldClose())	{
 		draw_grid(WIN_HEIGHT, WIN_WIDTH, GRAY);
@@ -42,8 +42,8 @@ int main()	{
 				draw_mode = false;
 			}
 			if (IsMouseButtonPressed(MOUSE_MIDDLE_BUTTON))	{
-				for (int i=0; i < WIN_HEIGHT; ++i)	{
-					for (int j=0; j < WIN_WIDTH; ++j)	{
+				for (int i=0; i < TOTAL_CELL_Y; ++i)	{
+					for (int j=0; j < TOTAL_CELL_X; ++j)	{
 						buffer1[i][j] = rand() % 4 == 0;
 					}
 				}

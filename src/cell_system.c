@@ -15,9 +15,9 @@ inline void draw_in_cell(int cellX, int cellY, Color color)	{
 	DrawRectangle(((cellX-1)*CELL_SIZE), ((cellY-1)*CELL_SIZE), CELL_SIZE-1, CELL_SIZE-1, color);
 }
 
-void show_buffer(const short buffer[WIN_HEIGHT][WIN_WIDTH], Color color)	{
-	for (short y=0; y < WIN_HEIGHT; ++y)	{
-		for (short x=0; x < WIN_WIDTH; ++x)	{
+void show_buffer(const short buffer[TOTAL_CELL_Y][TOTAL_CELL_X], Color color)	{
+	for (short y=0; y < TOTAL_CELL_Y; ++y)	{
+		for (short x=0; x < TOTAL_CELL_X; ++x)	{
 			if (buffer[y][x])	draw_in_cell(x, y, color);
 		}
 	}
@@ -34,7 +34,7 @@ inline gol_vec_t get_cell_coords(int pixelX, int pixelY)	{
 	return return_it;
 }
 
-void write_to_buffer(short buffer[WIN_HEIGHT][WIN_WIDTH], int pixelX, int pixelY)	{
+void write_to_buffer(short buffer[TOTAL_CELL_Y][TOTAL_CELL_X], int pixelX, int pixelY)	{
 	gol_vec_t vec = get_cell_coords(pixelX, pixelY);
 	buffer[vec.y+1][vec.x+1] = 1;
 }

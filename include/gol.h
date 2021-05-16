@@ -3,7 +3,7 @@
 
 #include "cell_system.h"
 
-int get_total_neighbours(const short buffer[WIN_HEIGHT][WIN_WIDTH], int posX, int posY);
-void calc_next_buffer(short new_buffer[WIN_HEIGHT][WIN_WIDTH], const short old_buffer[WIN_HEIGHT][WIN_WIDTH]);
+int get_total_neighbours(const short buffer[TOTAL_CELL_Y][TOTAL_CELL_X], int posX, int posY);
+void calc_next_buffer(short new_buffer[TOTAL_CELL_Y][TOTAL_CELL_X], const short old_buffer[TOTAL_CELL_Y][TOTAL_CELL_X]);
 
 #endif
