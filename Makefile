@@ -1,14 +1,14 @@
 CC = gcc
 STD = -std=c17
-OPTIMIZE = -O3
-LIBS = -lraylib -lm 
-WARN = -Wall
-LIBPATH = -L./lib
+OPTIMIZE = -Ofast
+LIBS = -lraylib -lm
+WARN = -Wall -Werror
+LIBPATH = -Llib
 
-game_of_life : main.c *.o
+game_of_life : *.o
 	$(CC) $^ -o $@ $(LIBS) $(LIBPATH) $(OPTIMIZE) $(STD) $(WARN)
 
-*.o : src/*.c
+*.o : src/*.c main.c
 	$(CC) $^ -c $(OPTIMIZE) $(STD)
 
 clean :

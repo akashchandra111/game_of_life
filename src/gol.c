@@ -5,12 +5,12 @@ int get_total_neighbours(const short buffer[TOTAL_CELL_Y][TOTAL_CELL_X], int pos
 
 	if (posX-1 >= 0 && posY-1 >= 0 && buffer[posY-1][posX-1])	++total;
 	if (posX >= 0 && posY-1 >= 0 && buffer[posY-1][posX])	++total;
-	if (posX+1 <= TOTAL_CELL_X && posY-1 >= 0 && buffer[posY-1][posX+1])	++total;
+	if (posX+1 < TOTAL_CELL_X && posY-1 >= 0 && buffer[posY-1][posX+1])	++total;
 	if (posX-1 >= 0 && posY >= 0 && buffer[posY][posX-1])	++total;
-	if (posX+1 <= TOTAL_CELL_X && posY >= 0 && buffer[posY][posX+1])	++total;
-	if (posX-1 >= 0 && posY+1 <= TOTAL_CELL_Y && buffer[posY+1][posX-1])	++total;
+	if (posX+1 < TOTAL_CELL_X && posY >= 0 && buffer[posY][posX+1])	++total;
+	if (posX-1 >= 0 && posY+1 < TOTAL_CELL_Y && buffer[posY+1][posX-1])	++total;
 	if (posX >= 0 && posY+1 >= 0 && buffer[posY+1][posX])	++total;
-	if (posX+1 <= TOTAL_CELL_X && posY+1 <= TOTAL_CELL_Y && buffer[posY+1][posX+1])	++total;
+	if (posX+1 < TOTAL_CELL_X && posY+1 < TOTAL_CELL_Y && buffer[posY+1][posX+1])	++total;
 
 	return total;
 }
