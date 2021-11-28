@@ -12,7 +12,7 @@ void draw_grid(int win_height, int win_width, Color color)	{
 }
 
 inline void draw_in_cell(int cellX, int cellY, Color color)	{
-	DrawRectangle(((cellX-1)*CELL_SIZE), ((cellY-1)*CELL_SIZE), CELL_SIZE-1, CELL_SIZE-1, color);
+	DrawRectangle(((cellX-1)*CELL_SIZE), ((cellY-1)*CELL_SIZE)+1, CELL_SIZE-1, CELL_SIZE-1, color);
 }
 
 void show_buffer(const short buffer[TOTAL_CELL_Y][TOTAL_CELL_X], Color color)	{

@@ -1,0 +1,18 @@
+CC = emcc
+STD = -std=c17
+OPTIMIZE = -O2
+LIBS = -lraylib -lm
+WARN = -Wall -Werror
+LIBPATH = -L./lib/wasm
+CFLAGS = -D_DEFAULT_SOURCE -Wno-missing-braces -Wunused-result
+LDFLAGS = -s USE_GLFW=3 -s ASYNCIFY -s TOTAL_MEMORY=67108864 -s FORCE_FILESYSTEM=1
+
+game_of_life.html : *.o
+	$(CC) $^ -o $@ $(LIBS) $(LIBPATH) $(LDFLAGS) $(OPTIMIZE) $(STD) $(WARN) $(CFLAGS) 
+
+*.o : src/*.c main.c
+	$(CC) $^ -c $(OPTIMIZE) $(STD)
+
+clean :
+	rm game_of_life.{html,js,wasm}
+	rm *.o

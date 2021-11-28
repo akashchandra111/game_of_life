@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define FPS 24
+#define FPS 30 
 
 void set_buffer_with_random_vals(short buffer[TOTAL_CELL_Y][TOTAL_CELL_X]);
 

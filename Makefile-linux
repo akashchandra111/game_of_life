@@ -1,9 +1,9 @@
 CC = gcc
 STD = -std=c17
 OPTIMIZE = -Ofast
-LIBS = -lraylib -lm
+LIBS = -lraylib -lm -lpthread -ldl -lrt -lX11
 WARN = -Wall -Werror
-LIBPATH = -Llib
+LIBPATH = -L lib/linux
 
 game_of_life : *.o
 	$(CC) $^ -o $@ $(LIBS) $(LIBPATH) $(OPTIMIZE) $(STD) $(WARN)
