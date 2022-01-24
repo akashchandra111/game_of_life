@@ -1,6 +1,6 @@
 CC = emcc
 STD = -std=c17
-OPTIMIZE = -O2
+OPTIMIZE = -O3
 LIBS = -lraylib -lm
 WARN = -Wall -Werror
 LIBPATH = -L./lib/wasm

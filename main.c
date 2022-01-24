@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define FPS 30 
+#define FPS 60 
 
 void set_buffer_with_random_vals(short buffer[TOTAL_CELL_Y][TOTAL_CELL_X]);
 
@@ -25,14 +25,13 @@ int main()	{
 
 	while(!WindowShouldClose())	{
 		draw_grid(WIN_HEIGHT-CELL_SIZE, WIN_WIDTH-CELL_SIZE, GRAY);
-		ClearBackground(WHITE);
+		ClearBackground(BROWN);
 
 		if (!draw_mode)	{
 			if (is_first_buffer_active)	{
 				show_buffer(buffer1, BLACK);
 				calc_next_buffer(buffer2, buffer1);
-			}
-			else	{
+			} else	{
 				show_buffer(buffer2, BLACK);
 				calc_next_buffer(buffer1, buffer2);
 			}

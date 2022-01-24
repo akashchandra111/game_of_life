@@ -7,6 +7,7 @@ LIBPATH = -L lib/linux
 
 game_of_life : *.o
 	$(CC) $^ -o $@ $(LIBS) $(LIBPATH) $(OPTIMIZE) $(STD) $(WARN)
+	rm *.o
 
 *.o : src/*.c main.c
 	$(CC) $^ -c $(OPTIMIZE) $(STD)
