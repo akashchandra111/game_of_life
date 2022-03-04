@@ -1,17 +1,17 @@
-CC = gcc
+CC = zig cc 
 STD = -std=c17
 OPTIMIZE = -Ofast
 LIBS = -lraylib -lm -lpthread -ldl -lrt -lX11
 WARN = -Wall -Werror
+OPTS = -flto -pedantic -march=native -s
 LIBPATH = -L lib/linux
 
 game_of_life : *.o
-	$(CC) $^ -o $@ $(LIBS) $(LIBPATH) $(OPTIMIZE) $(STD) $(WARN)
+	$(CC) $^ -o $@ $(LIBS) $(LIBPATH) $(OPTIMIZE) $(STD) $(WARN) $(OPTS)
 	rm *.o
 
 *.o : src/*.c main.c
 	$(CC) $^ -c $(OPTIMIZE) $(STD)
 
 clean :
-	rm *.o
 	rm game_of_life

@@ -1,9 +1,7 @@
-#ifndef GOL_H
-#define GOL_H
+#pragma once
 
 #include "cell_system.h"
+#include "types.h"
 
-int get_total_neighbours(const short buffer[TOTAL_CELL_Y][TOTAL_CELL_X], int posX, int posY);
-void calc_next_buffer(short new_buffer[TOTAL_CELL_Y][TOTAL_CELL_X], const short old_buffer[TOTAL_CELL_Y][TOTAL_CELL_X]);
-
-#endif
+i32 get_total_neighbours(const u16 buffer[TOTAL_CELL_Y][TOTAL_CELL_X], i32 posX, i32 posY);
+void calc_next_buffer(u16 new_buffer[TOTAL_CELL_Y][TOTAL_CELL_X], const u16 old_buffer[TOTAL_CELL_Y][TOTAL_CELL_X]);

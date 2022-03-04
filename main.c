@@ -1,23 +1,24 @@
 #include "include/raylib.h"
 #include "include/gol.h"
 #include "include/cell_system.h"
+#include "include/types.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
-#define FPS 60 
+#define FPS 30 
 
-void set_buffer_with_random_vals(short buffer[TOTAL_CELL_Y][TOTAL_CELL_X]);
+void set_buffer_with_random_vals(u16 buffer[TOTAL_CELL_Y][TOTAL_CELL_X]);
 
-int main()	{
+i32 main()	{
 	bool is_first_buffer_active = true;
 	bool draw_mode = true;
-	short buffer1[TOTAL_CELL_Y][TOTAL_CELL_X] = { 0 };
-	short buffer2[TOTAL_CELL_Y][TOTAL_CELL_X] = { 0 };
+	u16 buffer1[TOTAL_CELL_Y][TOTAL_CELL_X] = { 0 };
+	u16 buffer2[TOTAL_CELL_Y][TOTAL_CELL_X] = { 0 };
 
 	time_t t;
-	srand((unsigned int) time(&t));
+	srand((u32) time(&t));
 	
 	// CELL_SIZE is subtracted to render the cells from 0 to WIN_WIDTH/CELL_SIZE excluding last one for correct calculations
 	InitWindow(WIN_WIDTH-CELL_SIZE, WIN_HEIGHT-CELL_SIZE, "Game of life");		
@@ -47,8 +48,7 @@ int main()	{
 				draw_mode = true;
 				is_first_buffer_active = true;
 			}
-		}
-		else	{
+		} else	{
 			show_buffer(buffer1, YELLOW);
 			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))	{
 				write_to_buffer(buffer1, GetMouseX(), GetMouseY());
@@ -63,8 +63,6 @@ int main()	{
 		}
 
 		draw_in_cell_using_pixel(GetMouseX(), GetMouseY(), RED);
-		// gol_vec_t pointer = get_cell_coords(GetMouseX(), GetMouseY());
-		// printf("Cell coords; x: %d, y: %d, Total Neighbours: %d\r", pointer.x, pointer.y, get_total_neighbours(buffer1, pointer.x+1, pointer.y+1));
 
 		DrawFPS(WIN_WIDTH*0.85, WIN_HEIGHT*0.95);
 		EndDrawing();
@@ -74,9 +72,9 @@ int main()	{
 	return 0;
 }
 
-void set_buffer_with_random_vals(short buffer[TOTAL_CELL_Y][TOTAL_CELL_X])	{
-	for (int i=0; i < TOTAL_CELL_Y; ++i)	{
-		for (int j=0; j < TOTAL_CELL_X; ++j)	{
+void set_buffer_with_random_vals(u16 buffer[TOTAL_CELL_Y][TOTAL_CELL_X])	{
+	for (u32 i=0; i < TOTAL_CELL_Y; ++i)	{
+		for (u32 j=0; j < TOTAL_CELL_X; ++j)	{
 			buffer[i][j] = rand() % 4 == 0;
 		}
 	}
