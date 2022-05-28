@@ -7,15 +7,15 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define FPS 30 
+#define FPS 50 
 
-void set_buffer_with_random_vals(u16 buffer[TOTAL_CELL_Y][TOTAL_CELL_X]);
+void set_buffer_with_random_vals(u8 buffer[TOTAL_CELL_Y][TOTAL_CELL_X]);
 
 i32 main()	{
 	bool is_first_buffer_active = true;
 	bool draw_mode = true;
-	u16 buffer1[TOTAL_CELL_Y][TOTAL_CELL_X] = { 0 };
-	u16 buffer2[TOTAL_CELL_Y][TOTAL_CELL_X] = { 0 };
+	u8 buffer1[TOTAL_CELL_Y][TOTAL_CELL_X] = { 0 };
+	u8 buffer2[TOTAL_CELL_Y][TOTAL_CELL_X] = { 0 };
 
 	time_t t;
 	srand((u32) time(&t));
@@ -50,7 +50,7 @@ i32 main()	{
 			}
 		} else	{
 			show_buffer(buffer1, YELLOW);
-			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))	{
+			if (IsMouseButtonDown(MOUSE_LEFT_BUTTON))	{
 				write_to_buffer(buffer1, GetMouseX(), GetMouseY());
 			}
 			if (IsMouseButtonPressed(MOUSE_RIGHT_BUTTON))	{
@@ -72,7 +72,7 @@ i32 main()	{
 	return 0;
 }
 
-void set_buffer_with_random_vals(u16 buffer[TOTAL_CELL_Y][TOTAL_CELL_X])	{
+void set_buffer_with_random_vals(u8 buffer[TOTAL_CELL_Y][TOTAL_CELL_X])	{
 	for (u32 i=0; i < TOTAL_CELL_Y; ++i)	{
 		for (u32 j=0; j < TOTAL_CELL_X; ++j)	{
 			buffer[i][j] = rand() % 4 == 0;
